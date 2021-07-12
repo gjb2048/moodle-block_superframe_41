@@ -47,6 +47,13 @@ $string['width_details'] = 'Width of the frame (px)';
 $string['pagelayout'] = 'Page layout';
 $string['pagelayout_details'] = 'Select a preferred page layout';
 
+// Edit form strings.
+$string['size'] = 'Select a size for your iframe';
+$string['custom'] = 'Custom';
+$string['small'] = 'Small';
+$string['medium'] = 'Medium';
+$string['large'] = 'Large';
+
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
