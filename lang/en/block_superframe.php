@@ -57,3 +57,5 @@ $string['large'] = 'Large';
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
+$string['superframe:seeviewpage'] = 'Access the view page';
+$string['superframe:seeviewpagelink'] = 'See this link';
