@@ -23,7 +23,7 @@
  */
 class block_superframe_renderer extends plugin_renderer_base {
 
-    public function display_view_page($url, $width, $height) {
+    public function display_view_page($url, $width, $height, $courseid) {
         global $USER;
 
         $data = new stdClass();
@@ -36,6 +36,8 @@ class block_superframe_renderer extends plugin_renderer_base {
 
         // Add the user data.
         $data->fullname = fullname($USER);
+
+        $data->returnlink = new moodle_url('/course/view.php', ['id' => $courseid]);
 
         // Start output to browser.
         echo $this->output->header();

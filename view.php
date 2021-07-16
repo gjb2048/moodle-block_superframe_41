@@ -86,4 +86,4 @@ switch ($config->size) {
 }
 
 $renderer = $PAGE->get_renderer('block_superframe');
-$renderer->display_view_page($url, $width, $height);
+$renderer->display_view_page($url, $width, $height, $courseid);

@@ -33,6 +33,7 @@
     * url for the link to be displayed in an iframe.
     * height the height of the iframe in pixels.
     * width the width of the iframe in pixels.
+    * returnlink url of the course page containing the block instance.
 
     Example context (json):
     {
@@ -40,7 +41,8 @@
         "heading": "My superframe",
         "url": "http://www.moodlebites.com",
         "height": "400",
-        "width": "600"
+        "width": "600",
+        "returnlink": "http://www.moodlebites.com/course/view.php?id=2"
     }
 }}
 
@@ -48,4 +50,5 @@
     <p>{{fullname}}</p>
     <h5>{{heading}}</h5>
     <iframe src="{{url}}" height="{{height}}" width="{{width}}"></iframe>
+    <p><a href="{{{returnlink}}}">{{#str}}returncourse, block_superframe{{/str}}</a></p>
 </div>
