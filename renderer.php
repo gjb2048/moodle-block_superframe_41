@@ -46,4 +46,21 @@ class block_superframe_renderer extends plugin_renderer_base {
         // Finish the page.
         echo $this->output->footer();
     }
+
+    public function fetch_block_content($blockid, $courseid) {
+        global $USER;
+
+        $data = new stdClass();
+
+        $data->welcome = get_string('welcomeuser', 'block_superframe', $USER);
+        $context = \context_block::instance($blockid);
+        // Check the capability.
+        if (has_capability('block/superframe:seeviewpagelink', $context)) {
+            $data->url = new moodle_url('/blocks/superframe/view.php', ['blockid' => $blockid, 'courseid' => $courseid]);
+            $data->text = get_string('viewlink', 'block_superframe');
+        }
+
+        // Render the data in a Mustache template.
+        return $this->render_from_template('block_superframe/block_content', $data);
+    }
 }
