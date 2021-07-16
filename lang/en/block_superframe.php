@@ -54,6 +54,9 @@ $string['small'] = 'Small';
 $string['medium'] = 'Medium';
 $string['large'] = 'Large';
 
+// Week 4 optional task 1.
+$string['returncourse'] = 'Return to course';
+
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
