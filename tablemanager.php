@@ -110,6 +110,8 @@ $pagetitle = get_string('tablemanager', 'block_superframe');
 // Fetch URL parameters.
 $action = optional_param('action', 'list', PARAM_TEXT);
 $actionitem = optional_param('id', 0, PARAM_INT);
+global $SITE;
+$courseid = optional_param('courseid', $SITE->id, PARAM_INT);
 
 // Set course related variables.
 $PAGE->set_course($COURSE);
@@ -173,7 +175,11 @@ echo $renderer->heading($pagetitle.$tablename, 2);
 if ($action == "edit") {
     $alldata = $DB->get_records($tablename, ['id' => $actionitem], null, $fieldlist);
 } else { // Get all the records in the table.
-    $alldata = $DB->get_records($tablename, [], null, $fieldlist);
+    $filter = array();
+    if ($courseid != $SITE->id) {
+        $filter['id'] = $courseid;
+    }
+    $alldata = $DB->get_records($tablename, $filter, null, $fieldlist);
 }
 
 // Call the function at the top of the page to display an html table.
