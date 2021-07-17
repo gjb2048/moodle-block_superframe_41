@@ -87,7 +87,7 @@ class superframe_tablemanager_form extends moodleform {
         $mform = $this->_form;
 
         // Adding the standard "name" field.
-        $fieldname = "fullname";
+        $fieldname = "firstname";
         $mform->addElement('text', $fieldname, $fieldname, array('size' => '64'));
         $mform->setType($fieldname, PARAM_TEXT);
         $mform->addRule($fieldname, null, 'required', null, 'client');
@@ -102,16 +102,16 @@ class superframe_tablemanager_form extends moodleform {
 }
 
 // The table to work with.
-$tablename = "course";
-$fieldname = "fullname";  // This should match the name in the function definition.
-$fieldlist = 'id, fullname, shortname';  // Used to select which fields to return.
+$tablename = "user";
+$fieldname = "firstname";  // This should match the name in the function definition.
+$fieldlist = 'id, firstname, lastname, username, email';  // Used to select which fields to return.
 $pagetitle = get_string('tablemanager', 'block_superframe');
 
 // Fetch URL parameters.
 $action = optional_param('action', 'list', PARAM_TEXT);
 $actionitem = optional_param('id', 0, PARAM_INT);
-global $SITE;
-$courseid = optional_param('courseid', $SITE->id, PARAM_INT);
+/* Use course id 'global $SITE;
+$courseid = optional_param('courseid', $SITE->id, PARAM_INT);' */
 
 // Set course related variables.
 $PAGE->set_course($COURSE);
@@ -176,9 +176,9 @@ if ($action == "edit") {
     $alldata = $DB->get_records($tablename, ['id' => $actionitem], null, $fieldlist);
 } else { // Get all the records in the table.
     $filter = array();
-    if ($courseid != $SITE->id) {
+    /* Use course id 'if ($courseid != $SITE->id) {
         $filter['id'] = $courseid;
-    }
+    }' */
     $alldata = $DB->get_records($tablename, $filter, null, $fieldlist);
 }
 
