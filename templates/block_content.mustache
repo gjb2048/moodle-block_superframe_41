@@ -27,13 +27,17 @@
     * url the link to the block's main content page (view page).
     * text the view page link text.
     * students - an array of student names.
+    * popurl the link to the block data page (block_data page).
+    * poptext the block data page link text.
 
     Example context (json):
     {
         "welcome": "Welcome user",
         "url": "http://www.moodlebites.com",
         "text": "view page link",
-        "students": ["A Student", "Another Student"]
+        "students": ["A Student", "Another Student"],
+        "popurl": "#",
+        "poptext": "Block summary"
     }
 }}
 
@@ -42,6 +46,7 @@
     {{#url}}
     <a href="{{{url}}}">{{text}}</a>
     {{/url}}
+    <a href="{{{popurl}}}" target="_blank" class="d-block">{{poptext}}</a>
     {{#students}}
     <ul class="list-group ml-0 mt-2">
         <li class="list-group-item list-group-item-warning">{{.}}</li>

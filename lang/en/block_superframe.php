@@ -57,6 +57,14 @@ $string['large'] = 'Large';
 // Week 4 optional task 1.
 $string['returncourse'] = 'Return to course';
 
+// Block data table.  Week 5 task 1.
+$string['blockid'] = 'Block id';
+$string['blockname'] = 'Block name';
+$string['course'] = 'Block course';
+$string['catname'] = 'Course category';
+$string['tablecaption'] = 'Block data';
+$string['poptext'] = 'Block summary';
+
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
