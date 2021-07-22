@@ -31,6 +31,7 @@
     * poptext the block data page link text.
     * tableurl the link to the table manager page (tablemanager page).
     * tabletext the table manager page link text.
+    * headingclass the CSS class for the heading.
 
     Example context (json):
     {
@@ -41,12 +42,13 @@
         "popurl": "#",
         "poptext": "Block summary",
         "tableurl": "#",
-        "tabletext": "Table editing"
+        "tabletext": "Table editing",
+        "headingclass": "block_superframe_heading"
     }
 }}
 
 <div>
-    <h3>{{welcome}}</h3>
+    <h3 class="{{headingclass}}">{{welcome}}</h3>
     {{#url}}
     <a href="{{{url}}}">{{text}}</a>
     {{/url}}
