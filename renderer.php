@@ -72,7 +72,11 @@ class block_superframe_renderer extends plugin_renderer_base {
 
         $data = new stdClass();
 
-        $data->welcome = get_string('welcomeuser', 'block_superframe', $USER);
+        $name = $USER->firstname.' '.$USER->lastname;
+        $this->page->requires->js_call_amd('block_superframe/test_amd', 'init', ['name' => $name]);
+        $data->headingclass = 'block_superframe_heading';
+        $data->welcome = get_string('welcomeuser', 'block_superframe', $name);
+
         $context = \context_block::instance($blockid);
 
         // Check the capability.
