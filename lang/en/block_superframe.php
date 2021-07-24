@@ -73,6 +73,11 @@ $string['norecordsfound'] = 'No records found';
 // Navigation API - Week 6 task 2.
 $string['userlink'] = 'Installed blocks';
 
+// Modal AMD - Week 7.
+$string['about'] = 'About superframe';
+$string['modalbody'] = 'An example from the MoodleBites Developers level 1 course.';
+$string['modalfooter'] = 'Thank you for your interest.';
+
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
