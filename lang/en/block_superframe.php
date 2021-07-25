@@ -78,6 +78,9 @@ $string['about'] = 'About superframe';
 $string['modalbody'] = 'An example from the MoodleBites Developers level 1 course.';
 $string['modalfooter'] = 'Thank you for your interest.';
 
+// Event added - Week 8.
+$string['pageviewed'] = 'Block page viewed';
+
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
