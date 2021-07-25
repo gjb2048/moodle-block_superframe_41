@@ -32,6 +32,7 @@
     * tableurl the link to the table manager page (tablemanager page).
     * tabletext the table manager page link text.
     * headingclass the CSS class for the heading.
+    * access the last time the course this block is in was accessed unix time string.
 
     Example context (json):
     {
@@ -43,7 +44,8 @@
         "poptext": "Block summary",
         "tableurl": "#",
         "tabletext": "Table editing",
-        "headingclass": "block_superframe_heading"
+        "headingclass": "block_superframe_heading",
+        "acesss": "1670433341"
     }
 }}
 
@@ -54,6 +56,9 @@
     {{/url}}
     <a href="{{{popurl}}}" target="_blank" class="d-block">{{poptext}}</a>
     <a href="{{{tableurl}}}" target="_blank" class="d-block">{{tabletext}}</a>
+    {{#access}}
+    <p>{{#str}}lastaccess, block_superframe{{/str}} {{#userdate}}{{access}}, {{#str}}strftimedate{{/str}}{{/userdate}}</p>
+    {{/access}}
     {{#students}}
     <ul class="list-group ml-0 mt-2">
         <li class="list-group-item list-group-item-warning">{{.}}</li>

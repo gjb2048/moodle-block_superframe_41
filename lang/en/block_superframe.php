@@ -81,6 +81,9 @@ $string['modalfooter'] = 'Thank you for your interest.';
 // Event added - Week 8.
 $string['pageviewed'] = 'Block page viewed';
 
+// Last access - Week 8.
+$string['lastaccess'] = 'Last access:';
+
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';
