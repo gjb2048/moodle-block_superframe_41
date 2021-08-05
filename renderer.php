@@ -112,10 +112,12 @@ class block_superframe_renderer extends plugin_renderer_base {
         }
 
         // List of course students.
-        $data->students = array();
-        $users = self::get_course_users($courseid);
-        foreach ($users as $user) {
-            $data->students[] = ''.$user->lastname.', '.$user->firstname;
+        if (has_capability('block/superframe:viewenrolledstudents', $context)) {
+            $data->students = array();
+            $users = self::get_course_users($courseid);
+            foreach ($users as $user) {
+                $data->students[] = ''.$user->lastname.', '.$user->firstname;
+            }
         }
 
         // Render the data in a Mustache template.
@@ -125,16 +127,19 @@ class block_superframe_renderer extends plugin_renderer_base {
     private static function get_course_users($courseid) {
         global $DB;
 
+        // Just in case there are others and the 'default' value of '5' has changed.
+        $studentarch = get_archetype_roles('student');
+
         $sql = "SELECT u.id, u.firstname, u.lastname ";
         $sql .= "FROM {course} c ";
         $sql .= "JOIN {context} x ON c.id = x.instanceid ";
         $sql .= "JOIN {role_assignments} r ON r.contextid = x.id ";
         $sql .= "JOIN {user} u ON u.id = r.userid ";
         $sql .= "WHERE c.id = :courseid ";
-        $sql .= "AND r.roleid = :roleid";
+        $sql .= "AND r.roleid IN (".implode(',', array_keys($studentarch)).")";
 
         // In real world query should check users are not deleted/suspended.
-        $records = $DB->get_records_sql($sql, ['courseid' => $courseid, 'roleid' => 5]);
+        $records = $DB->get_records_sql($sql, ['courseid' => $courseid]);
 
         return $records;
     }

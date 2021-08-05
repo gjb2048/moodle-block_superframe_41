@@ -76,5 +76,17 @@ $capabilities = array(
             'student' => CAP_PREVENT,
             'guest' => CAP_PREVENT
         )
+    ),
+    // Restrict access to view enrolled students.
+    'block/superframe:viewenrolledstudents' => array(
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => array(
+            'manager' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+            'teacher' => CAP_ALLOW,
+            'student' => CAP_PREVENT,
+            'guest' => CAP_PREVENT
+        )
     )
 );
