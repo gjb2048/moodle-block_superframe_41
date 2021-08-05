@@ -82,7 +82,12 @@ class block_superframe_renderer extends plugin_renderer_base {
 
         $data = new stdClass();
 
-        $name = $USER->firstname.' '.$USER->lastname;
+        if ((!empty($USER->firstname)) || (!empty($USER->lastname))) {
+            $name = $USER->firstname.' '.$USER->lastname;
+        } else {
+            // Cope when the block is on the site course and not logged in etc.
+            $name = get_string('guest');
+        }
         $this->page->requires->js_call_amd('block_superframe/test_amd', 'init', ['name' => $name]);
         $data->headingclass = 'block_superframe_heading';
         $data->welcome = get_string('welcomeuser', 'block_superframe', $name);
