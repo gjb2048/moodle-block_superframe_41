@@ -65,6 +65,11 @@ $string['catname'] = 'Course category';
 $string['tablecaption'] = 'Block data';
 $string['poptext'] = 'Block summary';
 
+// Table manager.  Week 5 task 2.
+$string['tablemanager'] = 'Table Manager: ';
+$string['tabletext'] = 'Table editing';
+$string['norecordsfound'] = 'No records found';
+
 // Capability strings.
 $string['superframe:addinstance'] = 'Add a new Super frame block';
 $string['superframe:myaddinstance'] = 'Add a new Super frame block to my moodle';

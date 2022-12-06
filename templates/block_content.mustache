@@ -29,6 +29,8 @@
     * students - an array of student names.
     * popurl the link to the block data page (block_data page).
     * poptext the block data page link text.
+    * tableurl the link to the table manager page (tablemanager page).
+    * tabletext the table manager page link text.
 
     Example context (json):
     {
@@ -37,7 +39,9 @@
         "text": "view page link",
         "students": ["A Student", "Another Student"],
         "popurl": "#",
-        "poptext": "Block summary"
+        "poptext": "Block summary",
+        "tableurl": "#",
+        "tabletext": "Table editing"
     }
 }}
 
@@ -47,6 +51,7 @@
     <a href="{{{url}}}">{{text}}</a>
     {{/url}}
     <a href="{{{popurl}}}" target="_blank" class="d-block">{{poptext}}</a>
+    <a href="{{{tableurl}}}" target="_blank" class="d-block">{{tabletext}}</a>
     {{#students}}
     <ul class="list-group ml-0 mt-2">
         <li class="list-group-item list-group-item-warning">{{.}}</li>
