@@ -47,7 +47,6 @@ class block_content implements \renderable, \templatable {
             // Cope when the block is on the site course and not logged in etc.
             $name = get_string('guest');
         }
-        //$this->page->requires->js_call_amd('block_superframe/test_amd', 'init', ['name' => $name]);
         $data->name = $name;
         $data->headingclass = 'block_superframe_heading';
         $data->welcome = get_string('welcomeuser', 'block_superframe', $name);
@@ -56,7 +55,8 @@ class block_content implements \renderable, \templatable {
 
         // Check the capability.
         if (has_capability('block/superframe:seeviewpagelink', $context)) {
-            $data->url = new moodle_url('/blocks/superframe/view.php', ['blockid' => $this->blockid, 'courseid' => $this->courseid]);
+            $data->url = new moodle_url('/blocks/superframe/view.php',
+                ['blockid' => $this->blockid, 'courseid' => $this->courseid]);
             $data->text = get_string('viewlink', 'block_superframe');
         }
 

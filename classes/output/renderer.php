@@ -60,39 +60,16 @@ class renderer extends \plugin_renderer_base {
     }
 
     /**
-     * Function to display a table of records
-     * @param array the records to display.
-     * @return none.
+     * Method to render the block data.
+     * @param block_data $blockcontent the block data widget.
+     *
+     * @return Markup.
      */
-    public function display_block_table($records) {
-        // Prepare the data for the template.
-        $table = new stdClass();
+    public function render_block_data(block_data $blockdata) {
+        $output = $this->output->header();
+        $output .= $this->render_from_template('block_superframe/block_data', $blockdata->export_for_template($this));
+        $output .= $this->output->footer();
 
-        // Table headers.
-        $table->tableheaders = [
-            get_string('blockid', 'block_superframe'),
-            get_string('blockname', 'block_superframe'),
-            get_string('course', 'block_superframe'),
-            get_string('catname', 'block_superframe'),
-        ];
-
-        // Build the data rows.
-        foreach ($records as $record) {
-            $data = array();
-            $data[] = $record->id;
-            $data[] = $record->blockname;
-            $data[] = $record->shortname;
-            $data[] = $record->catname;
-            $table->tabledata[] = $data;
-        }
-
-        // Start output to browser.
-        echo $this->output->header();
-
-        // Call our template to render the data.
-        echo $this->render_from_template('block_superframe/block_data', $table);
-
-        // Finish the page.
-        echo $this->output->footer();
+        return $output;
     }
 }

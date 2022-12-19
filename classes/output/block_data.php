@@ -15,28 +15,43 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * block_superframe main file
+ * Block data widget.
  *
- * @package   block_superframe
- * @copyright  Daniel Neis <danielneis@gmail.com>
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    block_superframe
+ * @copyright  2022 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/**
- * Modified for use in MoodleBites for Developers Level 1
- * by Gareth Barnard, Richard Jones & Justin Hunt.
- */
-namespace block_superframe\local;
+namespace block_superframe\output;
 
-/**
- * Class to fetch data from the database
- *
- * @package block_superframe
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://moodle.org/mod/forum/discuss.php?d=330687
- */
-class block_data {
-    public static function fetch_block_data() {
+class block_data implements \renderable, \templatable {
+
+    public function export_for_template(\renderer_base $output) {
+        // Prepare the data for the template.
+        $table = new \stdClass();
+
+        // Table headers.
+        $table->tableheaders = [
+            get_string('blockid', 'block_superframe'),
+            get_string('blockname', 'block_superframe'),
+            get_string('course', 'block_superframe'),
+            get_string('catname', 'block_superframe'),
+        ];
+
+        // Build the data rows.
+        foreach ($this->fetch_block_data() as $record) {
+            $data = array();
+            $data[] = $record->id;
+            $data[] = $record->blockname;
+            $data[] = $record->shortname;
+            $data[] = $record->catname;
+            $table->tabledata[] = $data;
+        }
+
+        return $table;
+    }
+
+    protected static function fetch_block_data() {
         global $DB;
         $sql = "SELECT b.id, cat.id AS catid, cat.name AS catname, ";
         $sql .= "b.blockname, c.shortname ";
