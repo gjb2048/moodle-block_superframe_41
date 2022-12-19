@@ -3,7 +3,11 @@ Changes
 
 V401.1.8
 ---------
-1. Widgets! -> https://moodledev.io/docs/guides/templates/#rendering-in-php and https://moodledev.io/docs/4.1/guides/javascript#working-with-strings - https://docs.moodle.org/dev/Javascript/Coding_Style
+1. Widgets!  Refs:
+   - https://moodledev.io/docs/guides/templates/#rendering-in-php
+   - https://moodledev.io/docs/4.1/guides/javascript#working-with-strings
+   - https://docs.moodle.org/dev/Javascript/Coding_Style
+   - admin/tool/dataprivacy/amd/src/categoriesactions.js
 
 V401.1.7
 ---------

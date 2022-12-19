@@ -36,6 +36,7 @@
 
     Example context (json):
     {
+        "name": "Denise Emma Bug",
         "welcome": "Welcome user",
         "url": "http://www.moodlebites.com",
         "text": "view page link",
@@ -65,3 +66,8 @@
     </ul>
     {{/students}}
 </div>
+{{#js}}
+require(['block_superframe/test_amd'], function(TestAMD) {
+    TestAMD.init('{{name}}');
+});
+{{/js}}
