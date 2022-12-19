@@ -76,7 +76,8 @@ class block_superframe extends block_base {
         $this->content->footer = '';
 
         $renderer = $this->page->get_renderer('block_superframe');
-        $this->content->text = $renderer->fetch_block_content($this->instance->id, $this->page->course->id);
+        $renderable = new \block_superframe\output\block_content($this->instance->id, $this->page->course->id);
+        $this->content->text = $renderer->render($renderable);
 
         return $this->content;
     }

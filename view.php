@@ -100,4 +100,5 @@ switch ($size) {
 }
 
 $renderer = $PAGE->get_renderer('block_superframe');
-$renderer->display_view_page($url, $width, $height, $courseid, $blockid);
+$renderable = new block_superframe\output\view($url, $width, $height, $courseid, $blockid);
+echo $renderer->render($renderable);
