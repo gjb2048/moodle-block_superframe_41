@@ -13,68 +13,34 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Superframe renderer.
  *
  * @package    block_superframe
  * @copyright  Daniel Neis <danielneis@gmail.com>
- * Modified for use in MoodleBites for Developers Level 1 by Richard Jones & Justin Hunt
+ * @copyright  2022 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_superframe_renderer extends plugin_renderer_base {
 
-    public function display_view_page($url, $width, $height, $courseid, $blockid) {
-        global $USER;
+/**
+ * Modified for use in MoodleBites for Developers Level 1
+ * by Gareth Barnard, Richard Jones & Justin Hunt.
+ */
 
-        $this->page->requires->js_call_amd('block_superframe/modal_amd', 'init',
-            array('data' =>
-                array(
-                    'title' => get_string('about', 'block_superframe'),
-                    'body' => get_string('modalbody', 'block_superframe'),
-                    'footer' => get_string('modalfooter', 'block_superframe')
-                )
-            )
-        );
+namespace block_superframe\output;
 
-        $data = new stdClass();
+use moodle_url;
+use stdClass;
 
-        // Page heading and iframe data.
-        $data->heading = get_string('pluginname', 'block_superframe');
-        $data->url = $url;
-        $data->height = $height;
-        $data->width = $width;
+class renderer extends \plugin_renderer_base {
 
-        // Add the user data.
-        $data->fullname = fullname($USER);
+     public function render_view(view $view) {
+        $output = $this->output->header();
+        $output .= $this->render_from_template('block_superframe/view', $view->export_for_template($this));
+        $output .= $this->output->footer();
 
-        $data->returnlink = new moodle_url('/course/view.php', ['id' => $courseid]);
-
-        // Text for the links and the size parameter.
-        $strings = array();
-        $strings['custom'] = get_string('custom', 'block_superframe');
-        $strings['small'] = get_string('small', 'block_superframe');
-        $strings['medium'] = get_string('medium', 'block_superframe');
-        $strings['large'] = get_string('large', 'block_superframe');
-
-        // Create the data structure for the links.
-        $links = array();
-        $link = new moodle_url('/blocks/superframe/view.php', ['courseid' => $courseid,
-            'blockid' => $blockid]);
-
-        foreach ($strings as $key => $string) {
-            $links[] = ['link' => $link->out(false, ['size' => $key]), 'text' => $string];
-        }
-
-        $data->linkdata = $links;
-
-        // Start output to browser.
-        echo $this->output->header();
-
-        // Render the data in a Mustache template.
-        echo $this->render_from_template('block_superframe/frame', $data);
-
-        // Finish the page.
-        echo $this->output->footer();
+        return $output;
     }
 
     public function fetch_block_content($blockid, $courseid) {
