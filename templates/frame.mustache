@@ -54,3 +54,8 @@
     <p id="block_superframe_about" class="text-primary">{{#str}}about, block_superframe{{/str}}</p>
     <p><a href="{{{returnlink}}}">{{#str}}returncourse, block_superframe{{/str}}</a></p>
 </div>
+{{#js}}
+require(['block_superframe/modal_amd'], function(ModalAMD) {
+    ModalAMD.init();
+});
+{{/js}}

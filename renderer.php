@@ -26,16 +26,6 @@ class block_superframe_renderer extends plugin_renderer_base {
     public function display_view_page($url, $width, $height, $courseid, $blockid) {
         global $USER;
 
-        $this->page->requires->js_call_amd('block_superframe/modal_amd', 'init',
-            array('data' =>
-                array(
-                    'title' => get_string('about', 'block_superframe'),
-                    'body' => get_string('modalbody', 'block_superframe'),
-                    'footer' => get_string('modalfooter', 'block_superframe')
-                )
-            )
-        );
-
         $data = new stdClass();
 
         // Page heading and iframe data.
@@ -88,7 +78,7 @@ class block_superframe_renderer extends plugin_renderer_base {
             // Cope when the block is on the site course and not logged in etc.
             $name = get_string('guest');
         }
-        $this->page->requires->js_call_amd('block_superframe/test_amd', 'init', ['name' => $name]);
+        $data->name = $name;
         $data->headingclass = 'block_superframe_heading';
         $data->welcome = get_string('welcomeuser', 'block_superframe', $name);
 
